@@ -3,7 +3,7 @@ loaderVersion="[47,)"
 license="Not specified"
 
 [[mods]]
-modId=cave_sound_discs"
+modId="cave_sound_discs"
 version="1.0.0"
 displayName="Cave sound disc"
 displayURL="https://mcreator.net"
