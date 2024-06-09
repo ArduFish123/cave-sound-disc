@@ -1,51 +1,51 @@
-on: [ pull_request, workflow_dispatch ]
+name: Publish on GitHub, CurseForge & Modrinth
+on: [ workflow_dispatch ]
+env:                                              #Environment variables that can later be referenced using ${{ env.MINECRAFT_VERSION }}. These are useful for repeating information and allow for quick changes for new mod updates
+  MINECRAFT_VERSION: 1.20.1                        
+  JAVA_VERSION: 22
 jobs:
   build:
     # ...
     permissions:
       contents: write
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Check Environment Variables
-        run: env
-
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - uses: Kir-Antipov/mc-publish@v3.3
         with:
-          submodules: true
+          modrinth-id: AANobbMI
+          modrinth-featured: true
+          modrinth-unfeature-mode: subset
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: "temurin"
-          java-version: 17
+          curseforge-id: 394468
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-      - name: Make Gradle Wrapper Executable
-        if: ${{ runner.os != 'Windows' }}
-        run: chmod +x ./gradlew
+          github-tag: 1.0
+          github-generate-changelog: true
+          github-draft: false
+          github-prerelease: false
+          github-commitish: dev
+          github-discussion: Announcements
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build
-        run: ./gradlew clean build
-        - name: Check Environment Variables
-        run: env
+          files: |
+            build/libs/!(*-@(dev|sources|javadoc)).jar
+            build/libs/*-@(dev|sources|javadoc).jar
 
-        - name: Publish (CurseForge/Modrinth/GitHub)
-        uses: Kir-Antipov/mc-publish@v3.2                                   #The specified MC-Publish GitHub Action in the version 3.2
-        with:
-          curseforge-id: 123456                                             #The id of your CurseForge project
-          curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
-          
-          modrinth-id: 1q2w3e4r                                             #The id of your modrinth project
-          modrinth-token: "${{env.MODRINTH_TOKEN}}"
-          
-          github-tag: "v${{env.VERSION}}"
-          github-token: "${{env.GITHUB_TOKEN}}"
-
-          name: "${{env.RELEASE_NAME}}"                             
-          version: "${{env.VERSION}}"
+          name: Cave sound disc
+          version: 1.0
           version-type: release
-          changelog-file: CHANGELOG.md                                      #The file in which the changes of your new update are specified (the path starts at your project root)
+          changelog-file: CHANGELOG.*
 
-          loaders: forge
-          game-versions: "${{env.MINECRAFT_VERSION}}"
-          java: "${{env.JAVA_VERSION}}"
+          loaders: |
+            forge
+          game-versions: |
+            > 1.20
+          game-version-filter: none
+          dependencies: |
+          java: |
+            21
+
+          retry-attempts: 2
+          retry-delay: 10000
+          fail-mode: fail
