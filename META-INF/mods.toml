@@ -6,19 +6,16 @@ license="Not specified"
 modId="cave_sound_discs"
 version="1.0.0"
 displayName="Cave sound disc"
-displayURL="https://mcreator.net"
-credits="Created using mod maker MCreator - https://mcreator.net/about"
-authors="vladr, MCreator"
+displayURL="https://modrinth.com/user/ARaspberry523"
+credits=""
+authors="ARaspberry523"
 
 # Start of user code block mod configuration
 # End of user code block mod configuration
 
-[[dependencies.blank_music_discs]]
+[[dependencies.cave_sound_discs]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1]"
+    versionRange=">1.20"
     ordering="NONE"
     side="BOTH"
-
-
-
