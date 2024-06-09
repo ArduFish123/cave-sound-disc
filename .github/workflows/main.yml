@@ -35,7 +35,7 @@ jobs:
           name: Cave sound disc
           version: 1.0
           version-type: release
-          changelog-file: CHANGELOG.*
+          changelog-file: CHANGELOG.md
 
           loaders: |
             forge
