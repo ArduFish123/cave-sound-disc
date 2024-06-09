@@ -3,7 +3,7 @@ loaderVersion="[47,)"
 license="Not specified"
 
 [[mods]]
-modId="cave_sound_discs"
+modId="blank_music_discs"
 version="1.0.0"
 displayName="Cave sound disc"
 displayURL="https://modrinth.com/user/ARaspberry523"
@@ -13,7 +13,7 @@ authors="ARaspberry523"
 # Start of user code block mod configuration
 # End of user code block mod configuration
 
-[[dependencies.cave_sound_discs]]
+[[dependencies.blank_music_discs]]
     modId="minecraft"
     mandatory=true
     versionRange=">1.20"
