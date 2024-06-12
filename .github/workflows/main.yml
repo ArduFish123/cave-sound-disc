@@ -23,19 +23,3 @@ jobs:
         with:
           name: Artifact
           path: build/libs/*.jar
-      - uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          # Only include this section if you wish to publish
-          # your assets on Modrinth.
-          modrinth-id: 6k9vLPFV
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          modrinth-featured: true
-          name: Cave Sound Discs 1.0.1
-          version: 1.0.1
-          version-type: release
-          loaders: |
-            forge
-          game-versions: |
-            1.20.1
-          java: |
-            21
