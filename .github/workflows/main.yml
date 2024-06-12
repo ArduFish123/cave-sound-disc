@@ -1,11 +1,6 @@
 name: Build
 
-on:
-  push:
-    tags-ignore:
-      - '**'
-    branches:
-      - '**'
+on: [workflow_dispatch]
 
 jobs:
   build:
@@ -28,3 +23,9 @@ jobs:
         with:
           name: Artifact
           path: build/libs/*.jar
+      - uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          # Only include this section if you wish to publish
+          # your assets on Modrinth.
+          modrinth-id: 6k9vLPFV
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
