@@ -1,4 +1,4 @@
 # Cave sound disc
-A Minecraft mod that adds a music disc that plays cave sounds for (jump)scaring your friends.
+A music disc that plays cave sounds for (jump)scaring your friends.
 
-Made with MCREATOR.
+Check the [wiki](https://github.com/ArduFish123/cave-sound-disc/wiki) for the crafting recipe.
